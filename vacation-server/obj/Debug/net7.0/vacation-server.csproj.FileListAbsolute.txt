@@ -41,3 +41,7 @@ D:\work\serious\vacation\vacation-server\obj\Debug\net7.0\refint\vacation-server
 D:\work\serious\vacation\vacation-server\obj\Debug\net7.0\vacation-server.pdb
 D:\work\serious\vacation\vacation-server\obj\Debug\net7.0\vacation-server.genruntimeconfig.cache
 D:\work\serious\vacation\vacation-server\obj\Debug\net7.0\ref\vacation-server.dll
+D:\work\serious\vacation\vacation-server\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\work\serious\vacation\vacation-server\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\work\serious\vacation\vacation-server\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\work\serious\vacation\vacation-server\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
