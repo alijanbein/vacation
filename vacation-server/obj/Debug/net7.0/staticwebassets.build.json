@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "BH6WJKQbMRYtVYJXrqcwmgXh5ihnC9Xr7IJdBaij8U8=",
+  "Source": "vacation-server",
+  "BasePath": "_content/vacation-server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
