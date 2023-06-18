@@ -91,9 +91,8 @@ public class AuthenticationController: ControllerBase
                 {
                     new Claim("EmployeeId", employee.EmployeeId.ToString()),
                     new Claim(ClaimTypes.Name, employee.Username)
-                    // Add additional claims as needed
                 }),
-                Expires = DateTime.UtcNow.AddDays(7), // Token expiration time
+                Expires = DateTime.UtcNow.AddDays(7), 
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
