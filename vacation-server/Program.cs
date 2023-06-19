@@ -20,9 +20,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseHttpsRedirection();
 
+app.UseMiddleware<TokenMiddleware>();
+app.UseRouting();
 app.UseAuthorization();
+
+// app.MapWhen(context => context.Request.Path.StartsWithSegments("/api/vacation"), appBranch =>
+// {
+//     appBranch.UseMiddleware<TokenMiddleware>();
+// });
 
 app.MapControllers();
 
