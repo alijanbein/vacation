@@ -50,6 +50,7 @@ public class AuthMiddelware
                     await context.Response.WriteAsync("your are not authorized");
 
                     return;
+                    
                 }
             }
             else
