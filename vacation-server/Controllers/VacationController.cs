@@ -40,13 +40,50 @@ public class VacationController : ControllerBase
         };
         _dbContext.Vacations.Add(vacation);
         _dbContext.SaveChanges();
-        return Ok(vacation);
+        var respone = new {status = "succes", vacation = vacation};
+        return Ok(respone);
         }
         catch (System.Exception ex)
         {
             
             return NotFound(ex.Message);
         }
+    }
+
+    [HttpPut("update_vacation/{id}")]
+    public ActionResult<Vacation> updateVacation([FromForm] VacationInput vacationInput, int id )
+    {
+        try
+        {
+             string s = HttpContext.Items["id"].ToString();
+            int employeeId;
+            int.TryParse(s, out employeeId);
+            var vacation = _dbContext.Vacations.Find(id);
+            if(vacation == null){
+                return NotFound();
+            }
+            if(vacation.EmployeeId == employeeId){
+                vacation.title = vacationInput.title;
+                vacation.Description = vacationInput.Description;
+                vacation.DateTimeFrom = vacationInput.DateTimeFrom;
+                vacation.DateTimeTo = vacationInput.DateTimeTo;
+                _dbContext.SaveChanges();
+                var respone = new {status= "succes", vacation = vacation};
+                return Ok(respone);
+            }
+            else
+            {
+                return NotFound("your are not the owner of this vacation");
+
+            }
+        }
+        catch (System.Exception ex) 
+        {
+            
+         return NotFound(ex.Message);
+;
+        }
+       return  Ok("fwe");
     }
 
 }
