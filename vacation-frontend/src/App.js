@@ -1,14 +1,12 @@
-
+import { BrowserRouter,Routes,Route } from "react-router-dom"
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-       
-        
-      </header>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<h1>sfse</h1>}/>
+    </Routes>
+  </BrowserRouter>
     </div>
   );
 }
