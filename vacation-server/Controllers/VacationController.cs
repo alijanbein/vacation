@@ -81,9 +81,20 @@ public class VacationController : ControllerBase
         {
             
          return NotFound(ex.Message);
-;
         }
-       return  Ok("fwe");
+       
+    }
+
+    [HttpGet("get_one_vacation/{id}")]
+    public ActionResult<Vacation> getOneVacation(int id)
+    {
+        var vacation = _dbContext.Vacations.Find(id);
+        if(vacation ==  null)
+        {
+            return NotFound();
+        }
+        var respone = new {status = "succes",vacation = vacation};
+        return Ok(respone);
     }
 
 }
