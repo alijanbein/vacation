@@ -23,15 +23,19 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
-
-app.UseMiddleware<TokenMiddleware>();
+// app.UsePathBase("/api/vacation/");
+// app.UseMiddleware<AuthMiddelware>();
 app.UseRouting();
 app.UseAuthorization();
+app.Map("/api/vacation", app =>
+{
+    app.UseMiddleware<AuthMiddelware>(); // Apply authentication middleware
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
+});
 
-// app.MapWhen(context => context.Request.Path.StartsWithSegments("/api/vacation"), appBranch =>
-// {
-//     appBranch.UseMiddleware<TokenMiddleware>();
-// });
 
 app.MapControllers();
 

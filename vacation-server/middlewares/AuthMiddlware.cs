@@ -4,12 +4,12 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-public class TokenMiddleware
+public class AuthMiddelware
 {
     private readonly RequestDelegate _next;
     private readonly IConfiguration _configuration;
 
-    public TokenMiddleware(RequestDelegate next,IConfiguration configuration)
+    public AuthMiddelware(RequestDelegate next,IConfiguration configuration)
     {
         _next = next;
         _configuration = configuration;
@@ -18,7 +18,6 @@ public class TokenMiddleware
     public async Task Invoke(HttpContext context)
     {
 
-       
             string header = context.Request.Headers["Authorization"];
             string token = header.Substring("Bearer ".Length);
             Console.WriteLine(token);
@@ -64,5 +63,6 @@ public class TokenMiddleware
 
         await _next(context);
     }
+      
 
 }
