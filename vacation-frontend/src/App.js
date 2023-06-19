@@ -1,4 +1,4 @@
-import { Routes, BrowserRouter, Route } from "react-router-dom";
+import { Routes, BrowserRouter, Route, useNavigate } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import { useEffect, useState } from "react";
 import AuthContext from "./context/authContext";
@@ -7,8 +7,9 @@ import HomePage from "./pages/HomePage";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-
+  const navigat = useNavigate()
   const login = (token) => {
+    console.log("yoo");
     localStorage.setItem("token", token);
     setToken(token);
     setIsLoggedIn(true);
@@ -17,23 +18,27 @@ function App() {
   const logout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
+    navigat("/auth")
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if(token){
-        login(token)
+      login(token)
+    }
+    else {
+      navigat("/auth")
     }
   }, []);
   return (
-    <BrowserRouter>
       <AuthContext.Provider value={{ isLoggedIn, token, login, logout }} >
       <Routes>
-        <Route path='/' element={<HomePage/>} />
-        <Route path='/auth' element={<AuthPage/>} />
+          <Route path="/auth" element={<AuthPage />} />
+          {isLoggedIn && <Route path='/' element={<HomePage/>} />
+}
+
       </Routes>
       </AuthContext.Provider>
-    </BrowserRouter>
   );
 }
 

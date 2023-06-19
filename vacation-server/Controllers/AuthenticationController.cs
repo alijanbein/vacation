@@ -44,7 +44,7 @@ public class AuthenticationController: ControllerBase
         _dbContext.Employees.Add(newEmployee);
         _dbContext.SaveChanges();
         var response = new {status = "succes",user = newEmployee};
-        return Ok(new JsonResult(response));
+        return Ok(response);
     }
 
     [HttpPost("login")]
@@ -54,6 +54,8 @@ public class AuthenticationController: ControllerBase
         {
             return BadRequest("Invalid Input entered");
         }    
+        Console.WriteLine(employeeInput.Username);
+        Console.WriteLine(employeeInput.Password);
         var employee = _dbContext.Employees.FirstOrDefault(e => e.Username == employeeInput.Username);
         if(employee == null || !PasswordHasher.VerifyPassword(employeeInput.Password,employee.Password))
         {

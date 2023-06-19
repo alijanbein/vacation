@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   VALIDATOR_MINLENGTH,
   VALIDATOR_MIN,
   VALIDATOR_REQUIRE,
   validate,
 } from "../validators";
+import UseHttp from "../hooks/http-hook";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/authContext";
 
 function AuthPage() {
-  const [isLogginMode, setIsLoginMode] = useState(false);
+  const [isLogginMode, setIsLoginMode] = useState(true);
   const [isProcced, setIsProcced] = useState(false);
+  const navigator = useNavigate();
+  const auth = useContext(AuthContext);
   const [data, setData] = useState({
     username: {
       value: "",
@@ -23,23 +28,44 @@ function AuthPage() {
       isValid: false,
     },
   });
-
+  const [isLoading, error, sendRequest] = UseHttp();
   const toggleLoginMode = () => {
     setIsLoginMode(!isLogginMode);
   };
-  const submitHandler = (e) => {
+
+  const submitHandler = async (e) => {
     setIsProcced(true);
     e.preventDefault();
-    if(!isLogginMode){
-        if(data.username.isValid && data.password.isValid && data.password.value == data.rePassword.value){
-            console.log(true);
-
-        }
-    }
-    else {
-        if(data.username.isValid && data.password.isValid ){
-            console.log(true);
-        }
+    if (!isLogginMode) {
+      if (
+        data.username.isValid &&
+        data.password.isValid &&
+        data.password.value == data.rePassword.value
+      ) {
+        const formData = new FormData();
+        formData.append("Username", data.username.value);
+        formData.append("Password", data.password.value);
+        formData.append("RePassword", data.rePassword.value);
+        const requestData = await sendRequest(
+          "authentication/register",
+          "POST",
+          formData
+        );
+        if (requestData.status == "succes") window.location.reload();
+      }
+    } else {
+      if (data.username.isValid && data.password.isValid) {
+        const formData = new FormData();
+        formData.append("username", data.username.value);
+        formData.append("Password", data.password.value);
+        const requestData = await sendRequest(
+          "authentication/login",
+          "POST",
+          formData
+        );
+        auth.login(requestData.token);
+        navigator("/")
+      }
     }
   };
   return (

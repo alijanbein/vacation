@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,10 @@ app.UseHttpsRedirection();
 // app.UseMiddleware<AuthMiddelware>();
 app.UseRouting();
 app.UseAuthorization();
+
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+
 app.Map("/api/vacation", app =>
 {
     app.UseMiddleware<AuthMiddelware>(); // Apply authentication middleware
