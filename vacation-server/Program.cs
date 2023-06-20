@@ -24,8 +24,7 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
-// app.UsePathBase("/api/vacation/");
-// app.UseMiddleware<AuthMiddelware>();
+
 app.UseRouting();
 app.UseAuthorization();
 
@@ -34,7 +33,7 @@ app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(
 
 app.Map("/api/vacation", app =>
 {
-    app.UseMiddleware<AuthMiddelware>(); // Apply authentication middleware
+    app.UseMiddleware<AuthMiddelware>(); 
     app.UseEndpoints(endpoints =>
     {
         endpoints.MapControllers();
