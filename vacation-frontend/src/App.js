@@ -9,7 +9,6 @@ function App() {
   const [token, setToken] = useState("");
   const navigat = useNavigate()
   const login = (token) => {
-    console.log("yoo");
     localStorage.setItem("token", token);
     setToken(token);
     setIsLoggedIn(true);

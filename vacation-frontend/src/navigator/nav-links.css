@@ -1,0 +1,31 @@
+.nav ul {
+  display: flex;
+  list-style: none;
+  font-size: 1.5rem;
+  color: aliceblue;
+  font-family: "McLaren", cursive;
+
+}
+
+.nav li{
+    margin-right: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.nav a:hover,
+.nav a:active{
+}
+
+
+@media (max-width: 768px) {
+    .nav ul{
+        flex-direction: column;
+    }
+    .nav li {
+        margin-top: 20px;
+    }
+}
