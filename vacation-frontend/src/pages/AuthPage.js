@@ -64,7 +64,6 @@ function AuthPage() {
           "POST",
           formData
         );
-        console.log(requestData.user);
         auth.login(requestData.token,requestData.user.employeeId);
         navigator("/");
       }

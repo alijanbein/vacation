@@ -49,7 +49,6 @@ const AddVacation = () => {
             authorization: "Bearer "+ auth.token
         }
       );
-      console.log(requestData);
       if (requestData.status == "succes") navigator("/");
     }
   };

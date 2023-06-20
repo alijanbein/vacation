@@ -8,12 +8,10 @@ const  CardList = (props) => {
   const [vacations,setVacations] = useState([]);
   const auth = useContext(AuthContext)
   useEffect(() => {
-    console.log(auth);
     const fetchData = async () => {
       const response = await sendRequest("vacation","GEt","",{
         authorization:"Bearer "+ auth.token
       })
-      console.log(response.vacations);
       setVacations(response.vacations)
     }
     fetchData();
