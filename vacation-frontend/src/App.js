@@ -5,6 +5,7 @@ import AuthContext from "./context/authContext";
 import HomePage from "./pages/HomePage";
 import MyVacations from "./pages/MyVacations";
 import Heading from "./navigator/Heading";
+import AddVacation from "./pages/AddVacation";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,8 +43,8 @@ function App() {
       <Routes>
           <Route path="/auth" element={<AuthPage />} />
           {isLoggedIn && <Route path='/' element={<HomePage/>} />}
-          {isLoggedIn && <Route path='/my_vacation' element={<MyVacations/>} />
-}
+          {isLoggedIn && <Route path='/my_vacation' element={<MyVacations/>} />}
+          {isLoggedIn && <Route path='/add_vacation' element={<AddVacation/>} />}
 
       </Routes>
       </AuthContext.Provider>

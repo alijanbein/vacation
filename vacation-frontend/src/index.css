@@ -56,7 +56,8 @@ body {
   margin-bottom: 8px;
 }
 
-.form input {
+.form input,
+.form textarea {
   width: 100%;
   padding: 1.2rem;
   border-radius: 9px;
@@ -66,7 +67,8 @@ body {
   border: 1px solid red !important;
 }
 
-.form input:focus {
+.form input:focus,
+form textarea:focus {
   outline: none;
   box-shadow: 0 0 0 4px rgba(253, 242, 233, 0.5);
 }

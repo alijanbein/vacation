@@ -1,0 +1,51 @@
+
+  .modal {
+    
+    position: fixed;
+    left: 27%;
+    top: 30vh;
+    width: 40%;
+    z-index: 100;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+
+}
+
+
+
+.modal-enter {
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.modal-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-exit-active {
+  transform: translateY(-10rem);
+  opacity: 0;
+  transition: all 200ms;
+}
+
+@media (max-width : 768px) {
+    .modal {
+      align-items: center;
+      left: 10%;
+      width: 70%;
+      
+    }
+   
+}
+

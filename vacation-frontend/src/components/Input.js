@@ -4,7 +4,17 @@ function Input(props) {
   return (
     <>
         <label>{props.label} </label>
-            <input
+            {props.textAria ? <textarea
+            rows={3}
+            className={`${
+                !props.isValid && props.isProcced ? "invalid" : ""
+              }`}
+              onChange={props.onChange}
+              id={props.id}
+              type={props.type}
+              placeholder={props.placeholder}
+              
+             /> : <input
               className={`${
                 !props.isValid && props.isProcced ? "invalid" : ""
               }`}
@@ -12,7 +22,7 @@ function Input(props) {
               id={props.id}
               type={props.type}
               placeholder={props.placeholder}
-            />
+            />}
     </>
   )
 }
