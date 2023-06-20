@@ -28,7 +28,7 @@ function VacationCard({ data,my,onClick }) {
       <div className="description">
         <p>{data.description}</p>
       </div>
-      <button onClick={my ? onClick : ()=>{}} className="btn more btn--form">
+      <button onClick={my ? ()=>{onClick(data)} : ()=>{}} className="btn more btn--form">
         {my ? "Edit" : "READ MORE"}
         
       </button>

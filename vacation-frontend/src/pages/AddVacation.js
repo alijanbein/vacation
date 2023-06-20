@@ -29,8 +29,8 @@ const AddVacation = () => {
   });
   const [isLoading, error, sendRequest] = UseHttp();
   const submitHandler = async (e) => {
-    setIsProcced(true);
     e.preventDefault();
+    setIsProcced(true);
     if (
       data.title.isValid &&
       data.startDate.isValid &&

@@ -22,9 +22,9 @@ const  CardList = (props) => {
     <div className="card-list">
       {vacations.map((data,index) => {
         if(props.my) {
-          if(data.employeeId == auth.userId) return <VacationCard my = {props.my} data = {data} key={index} />
+          if(data.employeeId == auth.userId) return <VacationCard onClick={props.onClick} my = {props.my} data = {data} key={index} />
         }
-        else return <VacationCard my = {props.my} data = {data} key={index} />
+        else return <VacationCard data = {data} key={index} />
       })}
     </div>
   );
