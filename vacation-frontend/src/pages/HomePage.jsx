@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AuthContext from '../context/authContext'
 import { useNavigate } from 'react-router-dom'
 import Heading from '../navigator/Heading'
+import CardList from '../components/CardList'
 
 function HomePage() {
     const auth = useContext(AuthContext)
@@ -15,7 +16,7 @@ function HomePage() {
   return (
    <>
      <Heading/>
-    <div>HomePage</div>
+     <CardList/>
    </>
   )
 }
