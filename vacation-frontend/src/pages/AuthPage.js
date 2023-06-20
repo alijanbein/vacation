@@ -8,6 +8,7 @@ import {
 import UseHttp from "../hooks/http-hook";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/authContext";
+import Input from "../components/Input";
 
 function AuthPage() {
   const [isLogginMode, setIsLoginMode] = useState(true);
@@ -63,8 +64,9 @@ function AuthPage() {
           "POST",
           formData
         );
-        auth.login(requestData.token);
-        navigator("/")
+        console.log(requestData.user);
+        auth.login(requestData.token,requestData.user.employeeId);
+        navigator("/");
       }
     }
   };
@@ -74,11 +76,11 @@ function AuthPage() {
 
       <form onSubmit={submitHandler} className="form">
         <div>
-          <label>Username </label>
-          <input
-            className={`${
-              !data.username.isValid && isProcced ? "invalid" : ""
-            }`}
+         
+          <Input
+            label="Username"
+            isValid = {data.username.isValid}
+            isProcced = {isProcced}
             onChange={(e) => {
               setIsProcced(false);
 
@@ -96,11 +98,10 @@ function AuthPage() {
           />
         </div>
         <div>
-          <label>Password </label>
-          <input
-            className={`${
-              !data.password.isValid && isProcced ? "invalid" : ""
-            }`}
+          <Input
+            label="Password"
+            isValid={data.password.isValid}
+            isProcced={isProcced}
             onChange={(e) => {
               setIsProcced(false);
               setData({
@@ -118,11 +119,10 @@ function AuthPage() {
         </div>
         {!isLogginMode && (
           <div>
-            <label>Confirm Password </label>
-            <input
-              className={`${
-                !data.rePassword.isValid && isProcced ? "invalid" : ""
-              }`}
+            <Input
+              label="Confirm Password"
+              isValid={data.rePassword.isValid}
+              isProcced={isProcced}
               onChange={(e) => {
                 setIsProcced(false);
 

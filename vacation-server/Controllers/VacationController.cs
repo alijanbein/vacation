@@ -17,8 +17,8 @@ public class VacationController : ControllerBase
     public ActionResult<Vacation> getVactions()
     {
         var vactions = _dbContext.Vacations.ToList();
-        
-        return Ok(vactions);
+        var respones = new {status = "succes", vacations=vactions};
+        return Ok(respones);
     }
     [HttpPost("add_vacation")]
     public ActionResult<Vacation> addVaction([FromForm] VacationInput vacationInput){
